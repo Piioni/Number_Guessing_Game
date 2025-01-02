@@ -76,6 +76,8 @@ public class Main {
         int number = (int) (Math.random() * 100) + 1;
         Scanner sc_game = new Scanner(System.in);
         boolean hasWon = false;
+        long startTime = System.currentTimeMillis(); // Tiempo de inicio
+
         while (tries < guesses) {
             System.out.println("Please enter your guess: ");
             try {
@@ -94,11 +96,17 @@ public class Main {
                 sc_game.nextLine();
             }
         }
+
+        long endTime = System.currentTimeMillis(); // Tiempo de finalización
+        long timeTaken = endTime - startTime; // Tiempo total en milisegundos
+
         if (hasWon) {
             System.out.println("Congratulations! You've guessed the correct number in " + tries + " tries.");
         } else {
             System.out.println("Game Over! The correct number was " + number);
         }
+        System.out.println("You took " + (timeTaken / 1000) + " seconds to finish the game.");
+
 
     }
 }
