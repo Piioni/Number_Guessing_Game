@@ -5,7 +5,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class number_guessing_game {
     public static void main(String[] args) {
         Scanner sc_main = new Scanner(System.in);
 
@@ -40,12 +40,13 @@ public class Main {
         int difficulty = 0;
         Scanner sc_dificultad = new Scanner(System.in);
         do {
-            try {
+
                 System.out.println("Please enter the difficulty level");
                 System.out.println("1. Easy (10 guesses)");
                 System.out.println("2. Medium (5 guesses)");
                 System.out.println("3. Hard (3 guesses)");
                 System.out.print("Enter your choice: ");
+            try {
                 difficulty = sc_dificultad.nextInt();
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a number between 1 and 3.");
