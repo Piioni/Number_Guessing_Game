@@ -1,3 +1,8 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -49,6 +54,7 @@ public class Main {
         } while (difficulty < 1 || difficulty > 3);
         return difficulty;
     }
+
 
     public static void playGame(int difficulty) {
         int guesses = 0;
@@ -102,11 +108,32 @@ public class Main {
 
         if (hasWon) {
             System.out.println("Congratulations! You've guessed the correct number in " + tries + " tries.");
+            saveScore(tries, difficulty, timeTaken);
         } else {
             System.out.println("Game Over! The correct number was " + number);
         }
         System.out.println("You took " + (timeTaken / 1000) + " seconds to finish the game.");
+        displayScores();
+    }
 
+    public static void saveScore(int tries, int difficulty, long timeTaken) {
+        try (FileWriter writer = new FileWriter("scores.txt", true)) {
+            writer.write("Difficulty: " + difficulty + ", Tries: " + tries + ", Time: " + timeTaken / 1000 + "seg\n");
+        } catch (IOException e) {
+            System.out.println("An error occurred while saving the score. ");
+        }
+    }
 
+    public static void displayScores(){
+        try {
+            List<String> Scores = Files.readAllLines(Paths.get("scores.txt"));
+            System.out.println("Scoreboard:");
+            for (String score : Scores) {
+                System.out.println(score);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while displaying the scores. ");
+        }
     }
 }
+
