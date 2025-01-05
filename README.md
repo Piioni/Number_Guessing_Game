@@ -34,7 +34,8 @@ Welcome to the Number Guessing Game! This is a simple command-line game where yo
 * **Hard**: 3 attempts to guess the correct number.
 
 ## Requirements
-* Java Development Kit.
+* JDK8 or higer (Java Development Kit).
+* Git
 * A bit of luck if you want to play on the hard difficulty. 
 
 ## Contributing
